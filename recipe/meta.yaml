@@ -1,3 +1,4 @@
+{% set python_min = '3.10' %}
 {% set name = "vector-vis-graph" %}
 {% set version = "0.7.3" %}
 
@@ -6,21 +7,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/vector_vis_graph-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/vector_vis_graph-{{ version }}.tar.gz
   sha256: 655fbeb8cc6b923d11596e649223494318194a4738f9b11c2c1b9ef7128f96cd
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.10,<3.12
+    - python {{ python_min }}
     - poetry-core >=1.0.0
     - pip
   run:
-    - python >=3.10,<3.12
+    - python >={{ python_min }},<3.12
     - numpy >=1.26.2,<2.0.0
     - numba >=0.58.1,<0.59.0
     - scipy >=1.11.4,<2.0.0
@@ -32,6 +33,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/tunakasif/vector-vis-graph
