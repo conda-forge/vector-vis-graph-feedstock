@@ -1,6 +1,6 @@
-{% set python_min = '3.10' %}
+{% set python_min = "3.10" %}
 {% set name = "vector-vis-graph" %}
-{% set version = "0.7.3" %}
+{% set version = "0.8.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/vector_vis_graph-{{ version }}.tar.gz
-  sha256: 655fbeb8cc6b923d11596e649223494318194a4738f9b11c2c1b9ef7128f96cd
+  sha256: bc10225131177c79755dc5c26bf9d8962071a3ea5f41a46c6ecb3b23588ccdb7
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
